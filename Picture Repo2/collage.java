@@ -31,8 +31,8 @@ public static void main( String args[])
 	Picture1 copyTo = new Picture1("images\\canvas.jpg");
 	//copyTo.explore();
 
-	copyTo.copyTotoro();
-	copyTo.explore();
+	copyTo.copyTotoro(0,0);
+	//copyTo.explore();
 	//copyTo.copyKatieMidway();
 	//copyTo.explore();
 
@@ -42,7 +42,10 @@ public static void main( String args[])
 	//copyTo.mirrorVertical();
 	//copyTo.explore();
 
-	copyTo.mirrorHorizontal();
+	//copyTo.mirrorHorizontal();
+	//copyTo.explore();
+
+	copyTo.blendPictures("images\\meadow2.jpg");
 	copyTo.explore();
 
 

@@ -116,45 +116,9 @@ public class Picture1 extends SimplePicture //implements colorinterface
    }//end of negate
 
 
-
-  /**
-   * Method to mirror around a vertical line in the middle
-   * of the picture based on the width
-   */
-   public void mirrorVertical()
-   {
-		String sourceFile = ("images\\KatieFancy.jpg");
-	   Picture sourcePicture = new Picture(sourceFile);
-
-	   Pixel sourcePixel = null;
-	   Pixel targetPixel = null;
-
-	   //loop through the columns
-	   for (int sourceX = 0, targetX=0;
-	   		sourceX < sourcePicture.getWidth();
-	   		sourceX++, targetX++)
-	   {
-		   //loop throught the rows
-		   for (int sourceY = 0, targetY = sourcePicture.getHeight();
-		   		sourceY < (sourcePicture.getHeight()/2);
-		   		sourceY++, targetY--)
-		   {
-
-		   		//set the target pixel color to the source pixel color
-		   		sourcePixel = sourcePicture.getPixel(sourceX,sourceY);
-		   		targetPixel = this.getPixel(targetX,targetY);
-		   		targetPixel.setColor(sourcePixel.getColor());
-			}//row loop
-
-	   }//col loop
-
-	}//end of mirrorVertical
-
-
   /**
    * Method to mirror around a horizontal line in the middle
-   * based on the height. It copies the top mirrored to the
-   * bottom
+   * based on the height.
    */
    public void mirrorHorizontal()
    {
@@ -186,25 +150,7 @@ public class Picture1 extends SimplePicture //implements colorinterface
 	}//end of mirrorHorizontal
 
 
-
-  /**
-   * Method to mirror around a horizontal line in the middle
-   * based on the height. It copies the top mirrored to the
-   * bottom
-   */
-   public void mirrorHorizontalBottomToTop()
-   {
-
-
-	}//end of mirrorHorizontal
-
-	/**
-	   * Method to copy the picture of Katie to the
-	   * upper left corner of the current picture
-   */
-
-
-   public void copyTotoro(/*sourceFile*/)
+   public void copyTotoro(int x, int y)
    {
 	   String sourceFile = ("images\\totoro.jpg");
 	   Picture sourcePicture = new Picture(sourceFile);
@@ -214,12 +160,12 @@ public class Picture1 extends SimplePicture //implements colorinterface
 
 		//width of source must be = or < the canvas I am copy to
 	   //loop through the columns
-	   for (int sourceX = 0, targetX=0;
+	   for (int sourceX = 0, targetX=x;
 	   		sourceX < sourcePicture.getWidth();
 	   		sourceX++, targetX++)
 	   {
 	   //loop throught the rows
-		   for (int sourceY = 0, targetY = 0;
+		   for (int sourceY = 0, targetY = y;
 		   		sourceY < sourcePicture.getHeight();
 		   		sourceY++, targetY++)
 		   {
@@ -244,7 +190,35 @@ public class Picture1 extends SimplePicture //implements colorinterface
 
 	public void blendPictures(String file)
 	{
+   	   String sourceFile = ("images\\totoro.jpg");
+   	   Picture blendPicture = new Picture(file);
+	   Picture sourcePicture = new Picture(sourceFile);
 
+	   Pixel sourcePixel = null;
+	   Pixel targetPixel = null;
+	   Pixel blendPixel = null;
+
+		//width of source must be = or < the canvas I am copy to
+	   //loop through the columns
+	   for (int sourceX = 0, targetX=0, blendX = 0;
+	   		sourceX < sourcePicture.getWidth();
+	   		sourceX++, targetX++, blendX++)
+	   {
+	   //loop throught the rows
+		   for (int sourceY = 0, targetY = 0, blendY = 0;
+		   		sourceY < sourcePicture.getHeight();
+		   		sourceY++, targetY++, blendY++)
+		   {
+		   		//set the target pixel color to the source pixel color
+		   		sourcePixel = sourcePicture.getPixel(sourceX,sourceY);
+		   		blendPixel = blendPicture.getPixel(blendX, blendY);
+		   		targetPixel = this.getPixel(targetX,targetY);
+		   		targetPixel.setColor(new Color((sourcePixel.getRed() + blendPixel.getRed())/2,
+		   		(sourcePixel.getGreen() + blendPixel.getGreen())/2,
+		   		(sourcePixel.getBlue() + blendPixel.getBlue())/2));
+			}//row loop
+
+	   }//col loop
 
 	}
 
