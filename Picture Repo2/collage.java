@@ -28,7 +28,7 @@ public static void main( String args[])
 	//p.explore();
 	//p.negate();
 
-	Picture1 copyTo = new Picture1("images\\canvas.jpg");
+	Picture1 copyTo = new Picture1("images\\newcanvas.jpg");
 	//copyTo.explore();
 
 	copyTo.copyTotoro(0,0);
@@ -46,6 +46,12 @@ public static void main( String args[])
 	//copyTo.explore();
 
 	copyTo.blendPictures("images\\meadow2.jpg");
+
+
+	//copyTo.recursiveTotoro(1);
+	//copyTo.explore();
+
+	//copyTo.grayscale();
 	copyTo.explore();
 
 

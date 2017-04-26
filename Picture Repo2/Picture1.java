@@ -222,6 +222,38 @@ public class Picture1 extends SimplePicture //implements colorinterface
 
 	}
 
+   public void recursiveTotoro(int factor)
+   {
+
+	  	String sourceFile = ("images\\totoro.jpg");
+	   	Picture sourcePic = new Picture(sourceFile);
+
+	    Pixel sourcePixel = null;
+	    Pixel targetPixel = null;
+
+	  	   //loop through the columns
+	  	   for (int sourceX = 0, targetX=sourcePic.getWidth();
+	  	   		sourceX < sourcePic.getWidth();
+	  	   		sourceX+=factor, targetX--)
+	  	   {
+	  		   //loop throught the rows
+	  		   for (int sourceY = 0, targetY = 0;
+	  		   		sourceY < sourcePic.getHeight();
+	  		   		sourceY+=factor, targetY++)
+	  		   {
+	  				//set the target pixel color to the source pixel color
+	  				sourcePixel = sourcePic.getPixel(sourceX,sourceY);
+	  				targetPixel = this.getPixel(targetX,targetY);
+	  				targetPixel.setColor(sourcePixel.getColor());
+	  			}//row loop
+
+	   }//col loop
+
+	   if (factor < 10)
+	  		recursiveTotoro(factor+1);
+
+   }//end of recursive totoro
+
 	/**
 	* Method to change the picture to grayscale
 	*/
@@ -248,26 +280,6 @@ public class Picture1 extends SimplePicture //implements colorinterface
 
 	}
 
-	/**
-   	* Method to copy but scaled to 2x the normal size
-   	* onto the current picture
-    */
-	public void copyflowerLarger(/*fileName*/)
-	{
-
-	}//end of CopyLarger
-
-	/**
-   	* Method to change the current picture to a sepia
-   	* tint (modify the middle colors to a light brown and
-   	* the light colors to a light yellow and make the
-   	* shadows darker)
-    */
-	public void sepiaTint()
-	{
-
-
-	}//end of sepiaTint
 
 
 	/**
@@ -286,37 +298,6 @@ public class Picture1 extends SimplePicture //implements colorinterface
 	{
 	}
 
-	/**
-   	* Method to copy the picture of rose but smaller
-   	* (half) as big) to the current picture
-    */
-	public void scale(Picture sourcePic /*, double factor*/)
-	{
-		//Picture flowerPicture = (new Picture("images\\rose.jpg"));
-
-		Pixel sourcePixel = null;
-   	   	Pixel targetPixel = null;
-
-	   //loop through the columns
-	   for (int sourceX = 0, targetX=0;
-	   		sourceX < sourcePic.getWidth();
-	   		sourceX+=2, targetX++)
-	   {
-		   //loop throught the rows
-		   for (int sourceY = 0, targetY = 0;
-		   		sourceY < sourcePic.getHeight();
-		   		sourceY+=2, targetY++)
-		   {
-
-				//set the target pixel color to the source pixel color
-				sourcePixel = sourcePic.getPixel(sourceX,sourceY);
-				targetPixel = this.getPixel(targetX,targetY);
-				targetPixel.setColor(sourcePixel.getColor());
-			}//row loop
-
-	   }//col loop
-
-	}//end of CopySmaller
 
 
   public static void main(String[] args)
